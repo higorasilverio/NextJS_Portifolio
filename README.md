@@ -8,3 +8,5 @@
 - Next JS
 - Styled Components
 - Tailwind
+- Eslint
+- Prettier
