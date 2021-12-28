@@ -21,6 +21,10 @@
 	},
 	"plugins": ["react", "@typescript-eslint"],
 	"rules": {
+		"max-len": [
+			"error",
+			{ "code": 80, "tabWidth": 4 }
+		],
 		"prettier/prettier": "error",
 		"react/jsx-filename-extension": [
 			"warn",
