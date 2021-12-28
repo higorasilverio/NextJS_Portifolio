@@ -1,35 +1,24 @@
-import styled, { ThemeProvider } from 'styled-components'
+import styled from 'styled-components'
 
 const Button = styled.button`
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border-radius: 3px;
-
-  /* Color the border and text with theme.main */
-  color: ${(props) => props.theme.main};
-  border: 2px solid ${(props) => props.theme.main};
+  font-size: ${(props) => props.theme.fontSize.md};
+  margin: ${(props) => props.theme.fontSize.xl};
+  padding: ${(props) => props.theme.fontSize.md};
+  color: ${(props) => props.theme.pallete.success[100]};
+  border: 2px solid ${(props) => props.theme.pallete.success[500]};
+  border-radius: 10px;
 `
 
-Button.defaultProps = {
-  theme: {
-    main: 'palevioletred',
-  },
-}
-
-const theme = {
-  main: 'mediumseagreen',
-}
+const Header = styled.h1`
+  font-size: ${(props) => props.theme.fontSize.xl};
+  margin: ${(props) => props.theme.fontSize.xl};
+`
 
 export default function Home() {
   return (
-    <div>
-      <h1 className='text-3xl font-bold underline'>Hello world!</h1>
-      <Button>Normal</Button>
-
-      <ThemeProvider theme={theme}>
-        <Button>Themed</Button>
-      </ThemeProvider>
+    <div className='flex content-center'>
+      <Header>Hello world!</Header>
+      <Button>Themed</Button>
     </div>
   )
 }
