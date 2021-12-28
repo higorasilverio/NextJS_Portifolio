@@ -1,4 +1,8 @@
-export default function Home() {
+import { MemoizedButton } from '../src/components/Button'
+import { MemoizedHeader } from '../src/components/Header'
+import { memo } from 'react'
+
+const Home = () => {
   return (
     <div
       className="flex w-full h-screen
@@ -9,47 +13,16 @@ export default function Home() {
         className="flex flex-col justify-evenly
         items-center bg-white rounded-3xl w-10/12 sm:w-3/4 h-5/6 sm:h-4/6"
       >
-        <h1
-          className="font-sans font-black text-5xl
-        text-sky-700 lg:text-9xl md:text-8xl sm:text-7xl"
-        >
-          Welcome!
-        </h1>
+        <MemoizedHeader label="Welcome" />
         <div className="flex flex-col xl:flex-row justify-evenly items-center w-full">
-          <button
-            type="button"
-            className="text-xl sm:text-2xl font-bold
-            text-sky-700 bg-sky-200 border-solid
-            border-2 border-sky-700 w-56 py-3 my-1 rounded-lg"
-          >
-            Site Features
-          </button>
-          <button
-            type="button"
-            className="text-xl sm:text-2xl font-bold
-            text-sky-700 bg-sky-200 border-solid
-            border-2 border-sky-700 w-56 py-3 my-1 rounded-lg"
-          >
-            Github Page
-          </button>
-          <button
-            type="button"
-            className="text-xl sm:text-2xl font-bold
-            text-sky-700 bg-sky-200 border-solid
-            border-2 border-sky-700 w-56 py-3 my-1 rounded-lg"
-          >
-            Social Networks
-          </button>
-          <button
-            type="button"
-            className="text-xl sm:text-2xl font-bold
-            text-sky-700 bg-sky-200 border-solid border-2
-            border-sky-700 w-56 py-3 my-1 rounded-lg"
-          >
-            Contact Me
-          </button>
+          <MemoizedButton label="Site Features" />
+          <MemoizedButton label="Github Page" />
+          <MemoizedButton label="Social Networks" />
+          <MemoizedButton label="Contact Me" />
         </div>
       </div>
     </div>
   )
 }
+
+export default memo(Home)
