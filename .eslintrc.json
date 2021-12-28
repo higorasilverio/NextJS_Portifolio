@@ -20,13 +20,11 @@
   "rules": {
     "semi": ["error", "never"],
     "quotes": ["error", "single"],
+    "no-undef": "warn",
     "no-duplicate-imports": ["error", { "includeExports": true }],
     "no-self-compare": "error",
     "no-template-curly-in-string": "error",
-    "no-use-before-define": [
-      "error",
-      { "functions": true, "classes": true, "variables": true }
-    ],
+    "no-use-before-define": ["error", { "functions": true, "classes": true, "variables": true }],
     "curly": "error",
     "default-case": "error",
     "default-case-last": "error",
@@ -59,7 +57,6 @@
     "no-multi-spaces": "error",
     "no-trailing-spaces": "error",
     "no-whitespace-before-property": "error",
-    "rest-spread-spacing": ["error", "never"],
-    "space-in-parens": ["error", "always"]
+    "rest-spread-spacing": ["error", "never"]
   }
 }
