@@ -1,14 +1,12 @@
+import * as S from './styles'
 import { memo } from 'react'
 
-const Title = ({ label }) => {
-  return (
-    <h1
-      className="font-sans font-black text-5xl
-        text-sky-700 lg:text-9xl md:text-8xl sm:text-7xl"
-    >
-      {label}
-    </h1>
-  )
+interface IProps {
+  label: string
+}
+
+const Title = ({ label }: IProps) => {
+  return <S.Header>{label}</S.Header>
 }
 
 export default memo(Title)

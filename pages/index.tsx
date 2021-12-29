@@ -11,10 +11,10 @@ const Home = () => {
       <Paper>
         <Title label="Welcome" />
         <FlexRow>
-          <Button label="Site Features" />
-          <Button label="Github Page" />
-          <Button label="Social Networks" />
-          <Button label="Contact Me" />
+          <Button label="Features" icon="VscFlame" />
+          <Button label="Github" icon="VscGithubAlt" />
+          <Button label="Social" icon="VscFeedback" />
+          <Button label="Contact" icon="VscMegaphone" />
         </FlexRow>
       </Paper>
     </Wrapper>

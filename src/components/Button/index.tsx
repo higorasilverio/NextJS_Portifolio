@@ -1,15 +1,19 @@
+import * as S from './styles'
+import * as VSC from 'react-icons/vsc'
 import { memo } from 'react'
 
-const Button = ({ label }) => {
+interface IProps {
+  label: string
+  icon: string
+}
+
+const Button = ({ label, icon }: IProps) => {
+  const VSCIcon = VSC[icon]
   return (
-    <button
-      type="button"
-      className="text-xl sm:text-2xl font-bold
-            text-sky-700 bg-sky-200 border-solid
-            border-2 border-sky-700 w-56 py-3 my-1 rounded-lg"
-    >
+    <S.StyledButton>
+      <VSCIcon />
       {label}
-    </button>
+    </S.StyledButton>
   )
 }
 

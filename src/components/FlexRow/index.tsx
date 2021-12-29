@@ -1,9 +1,12 @@
-import { memo } from 'react'
+import * as S from './styles'
+import { ReactNode, memo } from 'react'
 
-const FlexRow = ({ children }) => {
-  return (
-    <div className="flex flex-col xl:flex-row justify-evenly items-center w-full">{children}</div>
-  )
+interface IProps {
+  children?: ReactNode
+}
+
+const FlexRow = ({ children }: IProps) => {
+  return <S.Container>{children}</S.Container>
 }
 
 export default memo(FlexRow)

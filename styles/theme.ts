@@ -25,6 +25,11 @@ export const theme = {
       300: '#CCCCCC',
       500: '#333333'
     },
+    blue: {
+      100: '#E0F2FE',
+      300: '#BAE6FD',
+      500: '#7DD3FC'
+    },
     success: {
       100: '#01B36A',
       300: '#01D17C',

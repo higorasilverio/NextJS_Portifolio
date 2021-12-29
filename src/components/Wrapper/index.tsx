@@ -1,15 +1,12 @@
-import { memo } from 'react'
+import * as S from './styles'
+import { ReactNode, memo } from 'react'
 
-const Wrapper = ({ children }) => {
-  return (
-    <div
-      className="flex w-full h-screen
-      justify-center items-center bg-gradient-to-r
-      from-sky-200 via-sky-100 to-sky-200"
-    >
-      {children}
-    </div>
-  )
+interface IProps {
+  children?: ReactNode
+}
+
+const Wrapper = ({ children }: IProps) => {
+  return <S.Container>{children}</S.Container>
 }
 
 export default memo(Wrapper)
