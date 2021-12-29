@@ -1,6 +1,6 @@
 import { memo } from 'react'
 
-const Header = ({ label }) => {
+const Title = ({ label }) => {
   return (
     <h1
       className="font-sans font-black text-5xl
@@ -11,4 +11,4 @@ const Header = ({ label }) => {
   )
 }
 
-export const MemoizedHeader = memo(Header)
+export default memo(Title)

@@ -1,27 +1,23 @@
-import { MemoizedButton } from '../src/components/Button'
-import { MemoizedHeader } from '../src/components/Header'
+import Button from '../src/components/Button'
+import FlexRow from '../src/components/FlexRow'
+import Paper from '../src/components/Paper'
+import Title from '../src/components/Title'
+import Wrapper from '../src/components/Wrapper'
 import { memo } from 'react'
 
 const Home = () => {
   return (
-    <div
-      className="flex w-full h-screen
-      justify-center items-center bg-gradient-to-r
-      from-sky-200 via-sky-100 to-sky-200"
-    >
-      <div
-        className="flex flex-col justify-evenly
-        items-center bg-white rounded-3xl w-10/12 sm:w-3/4 h-5/6 sm:h-4/6"
-      >
-        <MemoizedHeader label="Welcome" />
-        <div className="flex flex-col xl:flex-row justify-evenly items-center w-full">
-          <MemoizedButton label="Site Features" />
-          <MemoizedButton label="Github Page" />
-          <MemoizedButton label="Social Networks" />
-          <MemoizedButton label="Contact Me" />
-        </div>
-      </div>
-    </div>
+    <Wrapper>
+      <Paper>
+        <Title label="Welcome" />
+        <FlexRow>
+          <Button label="Site Features" />
+          <Button label="Github Page" />
+          <Button label="Social Networks" />
+          <Button label="Contact Me" />
+        </FlexRow>
+      </Paper>
+    </Wrapper>
   )
 }
 

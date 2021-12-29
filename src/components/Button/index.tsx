@@ -13,4 +13,4 @@ const Button = ({ label }) => {
   )
 }
 
-export const MemoizedButton = memo(Button)
+export default memo(Button)
