@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  width: 100%;
 
-  @media (min-width: 640px) {
+  @media (min-width: 1280px) {
     flex-direction: column;
   }
 `

@@ -1,23 +1,23 @@
 import styled from 'styled-components'
 
 export const StyledButton = styled.button`
-  font-weight: 700;
-  color: ${(props) => props.theme.pallete.blue[500]};
-  background-color: ${(props) => props.theme.pallete.blue[100]};
-  border-width: 2px;
-  border-style: solid;
-  border-color: ${(props) => props.theme.pallete.blue[500]};
-  border-radius: 0.5rem;
   width: 14rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
-  font-size: 1.25rem;
-  line-height: 1.75rem;
+  font-weight: 700;
+  color: ${({ theme }) => theme.pallete.blue[500]};
+  background-color: ${({ theme }) => theme.pallete.blue[100]};
+  border-width: ${({ theme }) => theme.rawSizes.xs};
+  border-color: ${({ theme }) => theme.pallete.blue[500]};
+  border-style: solid;
+  border-radius: ${({ theme }) => theme.rawSizes.sm};
+  padding-top: ${({ theme }) => theme.rawSizes.sm};
+  padding-bottom: ${({ theme }) => theme.rawSizes.sm};
+  margin-top: ${({ theme }) => theme.rawSizes.xs};
+  margin-bottom: ${({ theme }) => theme.rawSizes.xs};
+  font-size: ${({ theme }) => theme.rawSizes.lg};
+  line-height: ${({ theme }) => theme.rawSizes.lg};
 
   @media (min-width: 640px) {
-    font-size: 1.5rem;
-    line-height: 2rem;
+    font-size: ${({ theme }) => theme.rawSizes.lg};
+    line-height: ${({ theme }) => theme.rawSizes.xl};
   }
 `

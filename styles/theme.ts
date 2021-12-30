@@ -5,7 +5,9 @@ const gridBasedSizes = {
   md: '1rem',
   lg: '1.5rem',
   xl: '2rem',
-  xxl: '4rem'
+  xlm: '3rem',
+  xxl: '4rem',
+  xxlm: '6rem'
 }
 
 export const theme = {
@@ -28,7 +30,7 @@ export const theme = {
     blue: {
       100: '#E0F2FE',
       300: '#BAE6FD',
-      500: '#7DD3FC'
+      500: '#0369A1'
     },
     success: {
       100: '#01B36A',
@@ -46,13 +48,7 @@ export const theme = {
       500: '#FF672D'
     }
   },
-  padding: {
-    ...gridBasedSizes
-  },
-  margin: {
-    ...gridBasedSizes
-  },
-  fontSize: {
+  rawSizes: {
     ...gridBasedSizes
   }
 }
