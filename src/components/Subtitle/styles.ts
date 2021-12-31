@@ -1,15 +1,14 @@
 import styled from 'styled-components'
 
-export const Header = styled.h1`
+export const Text = styled.span`
   font-family: 'Segoe UI', 'Helvetica Neue', Arial, 'Apple Color Emoji';
-  font-weight: 900;
-  color: ${({ theme }) => theme.pallete.blue[800]};
-  font-size: ${({ theme }) => theme.rawSizes.try};
+  font-weight: 700;
+  color: ${({ theme }) => theme.pallete.grey[800]};
+  font-size: ${({ theme }) => theme.rawSizes.md};
   line-height: 1;
-  margin: 0;
 
-  --hgo-grad-min: ${({ theme }) => theme.pallete.blue[500]};
-  --hgo-grad-max: ${({ theme }) => theme.pallete.blue[800]};
+  --hgo-grad-min: ${({ theme }) => theme.pallete.grey[500]};
+  --hgo-grad-max: ${({ theme }) => theme.pallete.grey[800]};
 
   background: -webkit-linear-gradient(
     125deg,
@@ -21,6 +20,6 @@ export const Header = styled.h1`
   -webkit-text-fill-color: transparent;
 
   @media (min-width: 640px) {
-    font-size: ${({ theme }) => theme.rawSizes.dtry};
+    font-size: ${({ theme }) => theme.rawSizes.xl};
   }
 `

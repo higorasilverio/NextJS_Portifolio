@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
-export const Header = styled.h1`
+export const Header = styled.h2`
   font-family: 'Segoe UI', 'Helvetica Neue', Arial, 'Apple Color Emoji';
   font-weight: 900;
   color: ${({ theme }) => theme.pallete.blue[800]};
-  font-size: ${({ theme }) => theme.rawSizes.try};
+  font-size: ${({ theme }) => theme.rawSizes.xl};
   line-height: 1;
   margin: 0;
 
@@ -21,6 +21,6 @@ export const Header = styled.h1`
   -webkit-text-fill-color: transparent;
 
   @media (min-width: 640px) {
-    font-size: ${({ theme }) => theme.rawSizes.dtry};
+    font-size: ${({ theme }) => theme.rawSizes.xxl};
   }
 `
