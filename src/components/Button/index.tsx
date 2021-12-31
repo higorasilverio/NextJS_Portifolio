@@ -11,8 +11,10 @@ const Button = ({ label, icon }: IProps) => {
   const VSCIcon = VSC[icon]
   return (
     <S.StyledButton>
-      <VSCIcon />
-      {label}
+      <span>{label}</span>
+      <div>
+        <VSCIcon />
+      </div>
     </S.StyledButton>
   )
 }
