@@ -1,4 +1,4 @@
-import Button from '../src/components/Button'
+import Anchor from '../src/components/Anchor'
 import FlexRow from '../src/components/FlexRow'
 import Paper from '../src/components/Paper'
 import Title from '../src/components/Title'
@@ -11,10 +11,10 @@ const Home = () => {
       <Paper>
         <Title label="Welcome" />
         <FlexRow>
-          <Button label="Features" icon="VscFlame" />
-          <Button label="Github" icon="VscGithubAlt" />
-          <Button label="Social" icon="VscFeedback" />
-          <Button label="Contact" icon="VscMegaphone" />
+          <Anchor label="Features" href="/features" passHref={true} icon="VscFlame" />
+          <Anchor label="Github" href="/github" passHref={true} icon="VscGithubAlt" />
+          <Anchor label="Social" href="/social" passHref={true} icon="VscFeedback" />
+          <Anchor label="Contact" href="/contact" passHref={true} icon="VscMegaphone" />
         </FlexRow>
       </Paper>
     </Wrapper>
