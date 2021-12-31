@@ -1,3 +1,4 @@
+import HomeButton from '../../src/components/HomeButton'
 import Paper from '../../src/components/Paper'
 import Title from '../../src/components/Title'
 import Wrapper from '../../src/components/Wrapper'
@@ -9,6 +10,7 @@ const Contact = () => {
       <Paper>
         <Title label="Contact" />
       </Paper>
+      <HomeButton />
     </Wrapper>
   )
 }
