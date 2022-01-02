@@ -4,7 +4,7 @@ export const Text = styled.span`
   font-family: 'Segoe UI', 'Helvetica Neue', Arial, 'Apple Color Emoji';
   font-weight: 700;
   color: ${({ theme }) => theme.pallete.grey[800]};
-  font-size: ${({ theme }) => theme.rawSizes.md};
+  font-size: ${({ theme }) => theme.rawSizes.xl};
   line-height: 1;
 
   --hgo-grad-min: ${({ theme }) => theme.pallete.grey[500]};
@@ -18,8 +18,4 @@ export const Text = styled.span`
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
-  @media (min-width: 640px) {
-    font-size: ${({ theme }) => theme.rawSizes.xl};
-  }
 `

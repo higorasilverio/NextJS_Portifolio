@@ -12,11 +12,21 @@ export const MainGrid = styled.div`
 
 export const LeftSide = styled.div`
   width: 28.5%;
+  max-width: 400px;
+  min-width: 300px;
   height: 100%;
 
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  span {
+    border-radius: ${({ theme }) => theme.rawSizes.lg};
+  }
+
+  @media (max-width: 1400px) {
+    display: none;
+  }
 `
 
 export const RightSide = styled.div`
