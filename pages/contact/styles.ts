@@ -47,10 +47,59 @@ export const TitleGrid = styled.div`
 `
 
 export const Field = styled.div`
-  width: 100%;
+  width: 80%;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 1400px) {
+    width: 100%;
+  }
+`
+
+export const SideGrid = styled.div`
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @media (max-width: 1400px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+`
+
+export const Action = styled.div`
+  width: 250px;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+
+  --hgo-grad-min: ${({ theme }) => theme.pallete.blue[500]};
+  --hgo-grad-max: ${({ theme }) => theme.pallete.blue[800]};
+
+  border-radius: ${({ theme }) => theme.rawSizes.sm};
+  border: solid 3px transparent;
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
+    linear-gradient(125deg, var(--hgo-grad-max), var(--hgo-grad-min), var(--hgo-grad-max));
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: 2px 1000px 1px #fff inset;
+
+  &:hover {
+    box-shadow: none;
+  }
+
+  @media (max-width: 1400px) {
+    height: ${({ theme }) => theme.rawSizes.try};
+    margin-top: ${({ theme }) => theme.rawSizes.xs};
+  }
 `
