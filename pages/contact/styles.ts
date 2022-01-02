@@ -21,7 +21,7 @@ export const LeftSide = styled.div`
   align-items: center;
 
   span {
-    border-radius: ${({ theme }) => theme.rawSizes.lg};
+    border-radius: ${({ theme }) => theme.rawSizes.md};
   }
 
   @media (max-width: 1400px) {
