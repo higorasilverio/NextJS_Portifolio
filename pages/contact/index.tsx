@@ -11,25 +11,27 @@ import contactPic from '../../public/contact.jpg'
 import { memo } from 'react'
 
 const Contact = () => {
+  const openBlank = (url) => window.open(url, '_blank').focus()
+  const mainTo = () => window.location.href = 'mailto:higor.asilverio_eng@hotmail.com'
+  const wappTo = () => window.open('https://wa.me/5519983464642', '_blank').focus()
+
   const handleActionClick = (button) => {
-    let url = ''
     switch (button) {
     case 'mail':
-      url = 'https://outlook.live.com/owa/'
+      mainTo()
       break
     case 'phone':
-      url = 'https://web.whatsapp.com/'
+      wappTo()
       break
     case 'linkedIn':
-      url = 'https://www.linkedin.com/in/higorsilverio/'
+      openBlank('https://www.linkedin.com/in/higorsilverio/')
       break
     case 'instagram':
-      url = 'https://www.instagram.com/higor.asilverio/'
+      openBlank('https://www.instagram.com/higor.asilverio/')
       break
     default:
       break
     }
-    window.open(url, '_blank').focus()
   }
 
   return (
