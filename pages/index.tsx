@@ -13,7 +13,6 @@ const Home = () => {
         <FlexRow>
           <Anchor label="Features" href="/features" passHref={true} icon="VscFlame" />
           <Anchor label="Github" href="/github" passHref={true} icon="VscGithubAlt" />
-          <Anchor label="Social" href="/social" passHref={true} icon="VscFeedback" />
           <Anchor label="Contact" href="/contact" passHref={true} icon="VscMegaphone" />
         </FlexRow>
       </Paper>
