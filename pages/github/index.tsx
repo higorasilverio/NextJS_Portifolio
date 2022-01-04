@@ -1,44 +1,41 @@
 import { memo, useEffect, useState } from 'react'
-import HomeButton from '../../src/components/HomeButton'
-import { Octokit } from 'octokit'
-import Paper from '../../src/components/Paper'
-import Title from '../../src/components/Title'
-import Wrapper from '../../src/components/Wrapper'
+import GithubInterface from '@utils/interfaces/githubInterface'
+import HomeButton from '@components/HomeButton'
+import Image from 'next/image'
+import Paper from '@components/Paper'
+import Title from '@components/Title'
+import Wrapper from '@components/Wrapper'
+import api from '@service/api'
 
-
-const Github = ({ githubToken }) => {
-  const [name, setName] = useState<string>('loading...')
+const Github = () => {
+  const [user, setUser] = useState<GithubInterface>(null)
 
   useEffect(() => {
-    const getLoginName = async () => {
-      const octokit = new Octokit({ auth: githubToken })
-      const {
-        data: { login }
-      } = await octokit.rest.users.getAuthenticated()
-      setName(login)
-    }
-    getLoginName()
-  }, [githubToken])
+    api
+      .get('/users/higorasilverio')
+      .then(response =>
+        setUser(response.data)
+      )
+      .catch((err) => {
+        // eslint-disable-next-line no-console
+        console.error('ops! ocorreu um erro' + err)
+      })
+  }, [])
 
-  return (
+  return user ?
     <Wrapper>
       <Paper>
         <Title label="Github" />
-        <span>{name}</span>
+        <Image src={`https://github.com/${user?.login}.png`} width={100} height={100} />
+        <p>Usuário: {user?.login}</p>
+        <p>Biografia: {user?.bio}</p>
       </Paper>
       <HomeButton />
     </Wrapper>
-  )
+    :
+    <>higor</>
+
+
 }
 
 export default memo(Github)
-
-export const getServerSideProps = () => {
-  // eslint-disable-next-line no-undef
-  const githubToken = process.env.GITHUB_TOKEN
-  return {
-    props: {
-      githubToken
-    }
-  }
-}
