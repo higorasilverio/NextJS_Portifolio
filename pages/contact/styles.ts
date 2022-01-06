@@ -75,6 +75,8 @@ export const SideGrid = styled.div`
 
 export const Action = styled.div`
   width: 250px;
+  height: ${({ theme }) => theme.rawSizes.try};
+
   cursor: pointer;
 
   display: flex;
@@ -99,7 +101,6 @@ export const Action = styled.div`
   }
 
   @media (max-width: 1400px) {
-    height: ${({ theme }) => theme.rawSizes.try};
     margin-top: ${({ theme }) => theme.rawSizes.xs};
   }
 `
