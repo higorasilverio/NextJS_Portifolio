@@ -19,6 +19,13 @@ const Github = () => {
     window.open(user.html_url, '_blank').focus()
   }
 
+  const handleBio = () => {
+    if (user?.bio) {
+      return user.bio.length > 40 ? `${user.bio.substring(0, 40)}...` : user.bio
+    }
+    return 'No bio'
+  }
+
   useEffect(() => {
     api
       .get('/users/higorasilverio')
@@ -47,23 +54,25 @@ const Github = () => {
             <S.Table>
               <S.TableHeader>
                 <S.TableRow>
-                  <S.TableHead colspan={6}>Information</S.TableHead>
+                  <S.TableHead colspan={4}>Information</S.TableHead>
                 </S.TableRow>
               </S.TableHeader>
               <S.TableBody>
                 <S.TableRow>
                   <S.TableData bold>Name</S.TableData>
-                  <S.TableData colspan={2}>{user?.name}</S.TableData>
+                  <S.TableData colspan={3}>{user?.name}</S.TableData>
+                </S.TableRow>
+                <S.TableRow>
                   <S.TableData bold>Login</S.TableData>
-                  <S.TableData colspan={2}>{user?.login}</S.TableData>
+                  <S.TableData colspan={3}>{user?.login}</S.TableData>
                 </S.TableRow>
                 <S.TableRow>
                   <S.TableData bold>Location</S.TableData>
-                  <S.TableData colspan={2}>{user?.location}</S.TableData>
+                  <S.TableData colspan={3}>{user?.location}</S.TableData>
                 </S.TableRow>
                 <S.TableRow>
                   <S.TableData bold>Bio</S.TableData>
-                  <S.TableData colspan={5}>{user?.bio}</S.TableData>
+                  <S.TableData colspan={3}>{handleBio()}</S.TableData>
                 </S.TableRow>
               </S.TableBody>
             </S.Table>

@@ -64,7 +64,15 @@ export const TableHeader = styled.thead``
 
 export const TableBody = styled.tbody``
 
-export const TableRow = styled.tr``
+export const TableRow = styled.tr`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: ${({ theme }) => theme.rawSizes.xs};
+
+  @media (min-width: 1280px) {
+    display: table-row;
+  }
+`
 
 export const TableHead = styled.th.attrs((props) => ({
   colSpan: props.colspan || '1'
@@ -79,11 +87,27 @@ export const TableHead = styled.th.attrs((props) => ({
 export const TableData = styled.td.attrs((props) => ({
   colSpan: props.colspan || '1'
 }))`
+  background-color: ${({ theme }) => theme.pallete.grey[200]};
+  background-color: ${(props) =>
+    props.bold ? `${props.theme.pallete.grey[500]}` : `${props.theme.pallete.grey[200]}`};
+  border-top-left-radius: ${(props) => (props.bold ? `${props.theme.rawSizes.md}` : '0')};
+  border-top-right-radius: ${(props) => (props.bold ? `${props.theme.rawSizes.md}` : '0')};
+  border-bottom-right-radius: ${(props) => (props.bold ? '0' : `${props.theme.rawSizes.md}`)};
+  border-bottom-left-radius: ${(props) => (props.bold ? '0' : `${props.theme.rawSizes.md}`)};
   font-family: 'Segoe UI', 'Helvetica Neue', Arial, 'Apple Color Emoji';
   font-weight: ${(props) => (props.bold ? '800' : '600')};
   font-size: ${({ theme }) => theme.rawSizes.md};
   padding: ${({ theme }) => theme.rawSizes.xs};
-  text-align: ${(props) => (props.bold ? 'center' : 'left')};
-  color: ${({ theme }) => theme.pallete.grey[600]};
+  padding-left: ${(props) =>
+    props.bold ? `${props.theme.rawSizes.xs}` : `${props.theme.rawSizes.md}`};
+  text-align: center;
+  color: ${(props) =>
+    props.bold ? `${props.theme.pallete.light[100]}` : `${props.theme.pallete.grey[700]}`};
   display: ${(props) => (props.flex ? 'flex' : 'table-cell')};
+  /*  */
+
+  @media (min-width: 1280px) {
+    text-align: ${(props) => (props.bold ? 'center' : 'left')};
+    border-radius: ${({ theme }) => theme.rawSizes.md};
+  }
 `
