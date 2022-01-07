@@ -14,9 +14,14 @@ import api from '@service/api'
 
 const Github = () => {
   const [user, setUser] = useState<GithubInterface>(null)
+  const [searching, setSearching] = useState<boolean>(true)
 
-  const handleActionClick = () => {
+  const handleVisitClick = () => {
     window.open(user.html_url, '_blank').focus()
+  }
+
+  const handleSearchClick = () => {
+    setSearching(true)
   }
 
   const handleBio = () => {
@@ -27,65 +32,87 @@ const Github = () => {
   }
 
   useEffect(() => {
+    setSearching(true)
     api
       .get('/users/higorasilverio')
       .then((response) => {
         setUser(response.data)
+        setSearching(false)
       })
       .catch((err) => {
         console.error('ops! ocorreu um erro' + err)
       })
   }, [])
 
-  return user ? (
+  return (
     <Wrapper>
       <Paper>
         <Title label="Github" />
-        <FlexRow>
-          <S.ImageWrapper>
-            <Image
-              alt="Github profile picture"
-              src={`https://github.com/${user?.login}.png`}
-              width={200}
-              height={200}
-            />
-          </S.ImageWrapper>
-          <S.TableWrapper>
-            <S.Table>
-              <S.TableHeader>
-                <S.TableRow>
-                  <S.TableHead colspan={4}>Information</S.TableHead>
-                </S.TableRow>
-              </S.TableHeader>
-              <S.TableBody>
-                <S.TableRow>
-                  <S.TableData bold>Name</S.TableData>
-                  <S.TableData colspan={3}>{user?.name}</S.TableData>
-                </S.TableRow>
-                <S.TableRow>
-                  <S.TableData bold>Login</S.TableData>
-                  <S.TableData colspan={3}>{user?.login}</S.TableData>
-                </S.TableRow>
-                <S.TableRow>
-                  <S.TableData bold>Location</S.TableData>
-                  <S.TableData colspan={3}>{user?.location}</S.TableData>
-                </S.TableRow>
-                <S.TableRow>
-                  <S.TableData bold>Bio</S.TableData>
-                  <S.TableData colspan={3}>{handleBio()}</S.TableData>
-                </S.TableRow>
-              </S.TableBody>
-            </S.Table>
-          </S.TableWrapper>
-        </FlexRow>
-        <S.Action onClick={() => handleActionClick()}>
-          <ActionIcon src="visual" icon="VscGithubAlt" color="blue" size="xl" gradient={800} />
-        </S.Action>
+
+        {!searching && (
+          <>
+            <FlexRow>
+              <S.ImageWrapper>
+                <Image
+                  alt="Github profile picture"
+                  src={`https://github.com/${user?.login}.png`}
+                  width={200}
+                  height={200}
+                />
+              </S.ImageWrapper>
+              <S.TableWrapper>
+                <S.Table>
+                  <S.TableHeader>
+                    <S.TableRow>
+                      <S.TableHead colspan={4}>Information</S.TableHead>
+                    </S.TableRow>
+                  </S.TableHeader>
+                  <S.TableBody>
+                    <S.TableRow>
+                      <S.TableData bold>Name</S.TableData>
+                      <S.TableData colspan={3}>{user?.name}</S.TableData>
+                    </S.TableRow>
+                    <S.TableRow>
+                      <S.TableData bold>Login</S.TableData>
+                      <S.TableData colspan={3}>{user?.login}</S.TableData>
+                    </S.TableRow>
+                    <S.TableRow>
+                      <S.TableData bold>Location</S.TableData>
+                      <S.TableData colspan={3}>{user?.location}</S.TableData>
+                    </S.TableRow>
+                    <S.TableRow>
+                      <S.TableData bold>Bio</S.TableData>
+                      <S.TableData colspan={3}>{handleBio()}</S.TableData>
+                    </S.TableRow>
+                  </S.TableBody>
+                </S.Table>
+              </S.TableWrapper>
+            </FlexRow>
+            <S.FormWrapper>
+              <S.Action onClick={() => handleVisitClick()}>
+                <S.Text>VISIT</S.Text>
+                <S.Displayer>
+                  <ActionIcon
+                    src="visual"
+                    icon="VscGithubAlt"
+                    color="blue"
+                    size="lg"
+                    gradient={800}
+                  />
+                </S.Displayer>
+              </S.Action>
+              <S.Action onClick={() => handleSearchClick()}>
+                <S.Text>SEARCH</S.Text>
+                <S.Displayer>
+                  <ActionIcon src="visual" icon="VscSearch" color="blue" size="lg" gradient={800} />
+                </S.Displayer>
+              </S.Action>
+            </S.FormWrapper>
+          </>
+        )}
       </Paper>
       <HomeButton />
     </Wrapper>
-  ) : (
-    <>higor</>
   )
 }
 

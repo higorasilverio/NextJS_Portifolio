@@ -16,15 +16,26 @@ export const TableWrapper = styled.div`
   display: flex;
 `
 
+export const FormWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+`
+
 export const Action = styled.div`
-  width: 250px;
+  padding-top: ${({ theme }) => theme.rawSizes.xs};
+  padding-bottom: ${({ theme }) => theme.rawSizes.xs};
+  padding-left: ${({ theme }) => theme.rawSizes.md};
+  padding-right: ${({ theme }) => theme.rawSizes.md};
   max-height: ${({ theme }) => theme.rawSizes.try};
+  max-width: 2.5rem;
 
   cursor: pointer;
 
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-evenly;
   align-items: center;
   flex-grow: 1;
 
@@ -41,10 +52,33 @@ export const Action = styled.div`
 
   &:hover {
     box-shadow: none;
+
+    span {
+      color: ${({ theme }) => theme.pallete.light[100]};
+    }
+
+    div > div > svg {
+      color: ${({ theme }) => theme.pallete.light[100]};
+    }
   }
 
-  @media (max-width: 1400px) {
-    margin-top: ${({ theme }) => theme.rawSizes.xs};
+  @media (min-width: 1280px) {
+    max-width: ${({ theme }) => theme.rawSizes.dtry};
+  }
+`
+
+export const Text = styled.span`
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, 'Apple Color Emoji';
+  font-weight: ${(props) => (props.bold ? '800' : '600')};
+  font-size: ${({ theme }) => theme.rawSizes.md};
+  color: ${({ theme }) => theme.pallete.blue[800]};
+`
+
+export const Displayer = styled.div`
+  display: none;
+
+  @media (min-width: 1280px) {
+    display: block;
   }
 `
 
@@ -87,7 +121,6 @@ export const TableHead = styled.th.attrs((props) => ({
 export const TableData = styled.td.attrs((props) => ({
   colSpan: props.colspan || '1'
 }))`
-  background-color: ${({ theme }) => theme.pallete.grey[200]};
   background-color: ${(props) =>
     props.bold ? `${props.theme.pallete.grey[500]}` : `${props.theme.pallete.grey[200]}`};
   border-top-left-radius: ${(props) => (props.bold ? `${props.theme.rawSizes.md}` : '0')};
