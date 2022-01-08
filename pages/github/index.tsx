@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 /* eslint-disable no-extra-parens */
 import * as S from './styles'
+import * as Yup from 'yup'
+import { ErrorMessage, Field, Form, Formik } from 'formik'
 import { memo, useEffect, useState } from 'react'
 import ActionIcon from '../../src/components/ActionIcon'
 import FlexRow from '@components/FlexRow'
@@ -31,23 +33,44 @@ const Github = () => {
     return 'No bio'
   }
 
-  useEffect(() => {
-    setSearching(true)
+  const getUserData = (login) => {
     api
-      .get('/users/higorasilverio')
+      .get(`/users/${login}`)
       .then((response) => {
         setUser(response.data)
+        console.log(response.data)
         setSearching(false)
       })
       .catch((err) => {
         console.error('ops! ocorreu um erro' + err)
       })
+  }
+
+  useEffect(() => {
+    setSearching(true)
+    getUserData('higorasilverio')
   }, [])
 
   return (
     <Wrapper>
       <Paper>
         <Title label="Github" />
+
+        {searching && (
+          <Formik
+            initialValues={{ login: 'higorasilverio' }}
+            validationSchema={Yup.object({
+              login: Yup.string().min(5, 'Must be 5 characters or more').required('Required')
+            })}
+            onSubmit={(values) => getUserData(values.login)}
+          >
+            <Form>
+              <Field name="login" type="text" />
+              <ErrorMessage name="login" />
+              <button type="submit">Submit</button>
+            </Form>
+          </Formik>
+        )}
 
         {!searching && (
           <>
