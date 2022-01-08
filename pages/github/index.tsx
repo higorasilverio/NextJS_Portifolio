@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable no-extra-parens */
 import * as S from './styles'
 import * as Yup from 'yup'
@@ -17,6 +16,7 @@ import api from '@service/api'
 const Github = () => {
   const [user, setUser] = useState<GithubInterface>(null)
   const [searching, setSearching] = useState<boolean>(true)
+  const [notFound, setNotFound] = useState<boolean>(false)
 
   const handleVisitClick = () => {
     window.open(user.html_url, '_blank').focus()
@@ -33,16 +33,19 @@ const Github = () => {
     return 'No bio'
   }
 
+  const handleRetryClick = () => {
+    setNotFound(false)
+  }
+
   const getUserData = (login) => {
     api
       .get(`/users/${login}`)
       .then((response) => {
         setUser(response.data)
-        console.log(response.data)
         setSearching(false)
       })
       .catch((err) => {
-        console.error('ops! ocorreu um erro' + err)
+        setNotFound(true)
       })
   }
 
@@ -56,7 +59,16 @@ const Github = () => {
       <Paper>
         <Title label="Github" />
 
-        {searching && (
+        {searching && notFound && (
+          <div>
+            <span>User not found!</span>
+            <button type="reset" onClick={() => handleRetryClick()}>
+              Try again
+            </button>
+          </div>
+        )}
+
+        {searching && !notFound && (
           <Formik
             initialValues={{ login: 'higorasilverio' }}
             validationSchema={Yup.object({
