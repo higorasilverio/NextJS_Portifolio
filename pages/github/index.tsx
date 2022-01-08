@@ -21,7 +21,7 @@ const Github = () => {
 
   const handleVisitClick = useCallback(() => {
     window.open(user.html_url, '_blank').focus()
-  }, [])
+  }, [user.html_url])
 
   const handleSearchClick = useCallback(() => {
     setSearching(true)
@@ -32,7 +32,7 @@ const Github = () => {
       return user.bio.length > 40 ? `${user.bio.substring(0, 40)}...` : user.bio
     }
     return 'No bio'
-  }, [])
+  }, [user.bio])
 
   const handleRetryClick = useCallback(() => {
     setNotFound(false)
@@ -53,7 +53,7 @@ const Github = () => {
   useEffect(() => {
     setSearching(true)
     getUserData('higorasilverio')
-  }, [])
+  }, [getUserData])
 
   return (
     <Wrapper>
