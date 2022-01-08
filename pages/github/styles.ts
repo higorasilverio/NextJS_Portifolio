@@ -1,4 +1,5 @@
 /* eslint-disable no-extra-parens */
+import { ErrorMessage as FomikError, Field as FormikField } from 'formik'
 import styled from 'styled-components'
 
 export const ImageWrapper = styled.div`
@@ -10,6 +11,54 @@ export const ImageWrapper = styled.div`
   @media (min-width: 1280px) {
     display: flex;
   }
+`
+
+export const FormikWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+`
+
+export const Field = styled(FormikField)`
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, 'Apple Color Emoji';
+  font-weight: ${(props) => (props.bold ? '800' : '600')};
+  font-size: ${({ theme }) => theme.rawSizes.lg};
+  color: ${({ theme }) => theme.pallete.blue[800]};
+  width: 18rem;
+
+  border-radius: 0.75rem;
+  padding: 0.5rem 2px;
+  margin: 0.5rem 0;
+  text-align: center;
+
+  --hgo-grad-min: ${({ theme }) => theme.pallete.grey[500]};
+  --hgo-grad-max: ${({ theme }) => theme.pallete.grey[800]};
+
+  border: solid 3px transparent;
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
+    linear-gradient(125deg, var(--hgo-grad-max), var(--hgo-grad-min), var(--hgo-grad-max));
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: 2px 1000px 1px #fff inset;
+`
+
+export const ErrorMessage = styled(FomikError)`
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, 'Apple Color Emoji';
+  font-weight: ${(props) => (props.bold ? '800' : '600')};
+  font-size: ${({ theme }) => theme.rawSizes.lg};
+  color: ${({ theme }) => theme.pallete.error[500]};
+  margin: ${({ theme }) => theme.rawSizes.lg};
+  text-align: center;
+`
+export const RetryMessage = styled.span`
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, 'Apple Color Emoji';
+  font-weight: ${(props) => (props.bold ? '800' : '600')};
+  font-size: ${({ theme }) => theme.rawSizes.lg};
+  color: ${({ theme }) => theme.pallete.error[500]};
+  margin: ${({ theme }) => theme.rawSizes.lg};
+  text-align: center;
 `
 
 export const TableWrapper = styled.div`

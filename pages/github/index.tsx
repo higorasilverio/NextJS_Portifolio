@@ -1,9 +1,10 @@
 /* eslint-disable no-extra-parens */
 import * as S from './styles'
 import * as Yup from 'yup'
-import { ErrorMessage, Field, Form, Formik } from 'formik'
-import { memo, useEffect, useState } from 'react'
+import { Form, Formik } from 'formik'
+import { memo, useCallback, useEffect, useState } from 'react'
 import ActionIcon from '../../src/components/ActionIcon'
+import Button from '@components/Button'
 import FlexRow from '@components/FlexRow'
 import GithubInterface from '@utils/interfaces/githubInterface'
 import HomeButton from '@components/HomeButton'
@@ -18,36 +19,36 @@ const Github = () => {
   const [searching, setSearching] = useState<boolean>(true)
   const [notFound, setNotFound] = useState<boolean>(false)
 
-  const handleVisitClick = () => {
+  const handleVisitClick = useCallback(() => {
     window.open(user.html_url, '_blank').focus()
-  }
+  }, [])
 
-  const handleSearchClick = () => {
+  const handleSearchClick = useCallback(() => {
     setSearching(true)
-  }
+  }, [])
 
-  const handleBio = () => {
+  const handleBio = useCallback(() => {
     if (user?.bio) {
       return user.bio.length > 40 ? `${user.bio.substring(0, 40)}...` : user.bio
     }
     return 'No bio'
-  }
+  }, [])
 
-  const handleRetryClick = () => {
+  const handleRetryClick = useCallback(() => {
     setNotFound(false)
-  }
+  }, [])
 
-  const getUserData = (login) => {
+  const getUserData = useCallback((login) => {
     api
       .get(`/users/${login}`)
       .then((response) => {
         setUser(response.data)
         setSearching(false)
       })
-      .catch((err) => {
+      .catch(() => {
         setNotFound(true)
       })
-  }
+  }, [])
 
   useEffect(() => {
     setSearching(true)
@@ -60,26 +61,31 @@ const Github = () => {
         <Title label="Github" />
 
         {searching && notFound && (
-          <div>
-            <span>User not found!</span>
-            <button type="reset" onClick={() => handleRetryClick()}>
-              Try again
-            </button>
-          </div>
+          <S.FormikWrapper>
+            <S.RetryMessage>User not found!</S.RetryMessage>
+            <Button
+              type="reset"
+              icon="VscRefresh"
+              label="Retry"
+              onClick={() => handleRetryClick()}
+            />
+          </S.FormikWrapper>
         )}
 
         {searching && !notFound && (
           <Formik
             initialValues={{ login: 'higorasilverio' }}
             validationSchema={Yup.object({
-              login: Yup.string().min(5, 'Must be 5 characters or more').required('Required')
+              login: Yup.string().min(5, 'Too Short').required('Type something')
             })}
             onSubmit={(values) => getUserData(values.login)}
           >
             <Form>
-              <Field name="login" type="text" />
-              <ErrorMessage name="login" />
-              <button type="submit">Submit</button>
+              <S.FormikWrapper>
+                <S.Field name="login" type="text" />
+                <S.ErrorMessage component="span" name="login" />
+                <Button type="submit" icon="VscSearch" label="Submit" />
+              </S.FormikWrapper>
             </Form>
           </Formik>
         )}

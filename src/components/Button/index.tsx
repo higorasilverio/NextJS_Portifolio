@@ -5,12 +5,14 @@ import { memo } from 'react'
 interface IProps {
   label: string
   icon: string
+  type: string
+  onClick?: () => void
 }
 
-const Button = ({ label, icon }: IProps) => {
+const Button = ({ label, icon, type, onClick }: IProps) => {
   const VSCIcon = VSC[icon]
   return (
-    <S.StyledButton>
+    <S.StyledButton type={type} onClick={onClick}>
       <span>{label}</span>
       <div>
         <VSCIcon />
