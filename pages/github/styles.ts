@@ -1,6 +1,6 @@
 /* eslint-disable no-extra-parens */
 import { ErrorMessage as FomikError, Field as FormikField } from 'formik'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 export const ImageWrapper = styled.div`
   display: none;
@@ -59,6 +59,25 @@ export const RetryMessage = styled.span`
   color: ${({ theme }) => theme.pallete.error[500]};
   margin: ${({ theme }) => theme.rawSizes.lg};
   text-align: center;
+`
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`
+
+export const Loader = styled.div`
+  border: 10px solid ${({ theme }) => theme.pallete.blue[200]};
+  border-top: 10px solid ${({ theme }) => theme.pallete.blue[500]};
+  border-radius: 50%;
+  width: ${({ theme }) => theme.rawSizes.try};
+  height: ${({ theme }) => theme.rawSizes.try};
+  animation: ${rotate} 2s linear infinite;
 `
 
 export const TableWrapper = styled.div`

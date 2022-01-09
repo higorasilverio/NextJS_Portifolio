@@ -15,64 +15,56 @@ import Wrapper from '@components/Wrapper'
 import api from '@service/api'
 
 const Github = () => {
+  const [loading, setLoading] = useState<boolean>(true)
   const [user, setUser] = useState<GithubInterface>(null)
   const [searching, setSearching] = useState<boolean>(true)
   const [notFound, setNotFound] = useState<boolean>(false)
 
   const handleVisitClick = useCallback(() => {
     window.open(user.html_url, '_blank').focus()
-  }, [user.html_url])
-
-  const handleSearchClick = useCallback(() => {
-    setSearching(true)
-  }, [])
+  }, [user?.html_url])
 
   const handleBio = useCallback(() => {
-    if (user?.bio) {
-      return user.bio.length > 40 ? `${user.bio.substring(0, 40)}...` : user.bio
-    }
-    return 'No bio'
-  }, [user.bio])
-
-  const handleRetryClick = useCallback(() => {
-    setNotFound(false)
-  }, [])
+    return user?.bio && user?.bio.length > 40 ? `${user.bio.substring(0, 40)}...` : user?.bio
+  }, [user?.bio])
 
   const getUserData = useCallback((login) => {
+    setLoading(true)
     api
       .get(`/users/${login}`)
-      .then((response) => {
-        setUser(response.data)
-        setSearching(false)
-      })
-      .catch(() => {
-        setNotFound(true)
-      })
+      .then((response) => setUser(response.data))
+      .catch(() => setNotFound(true))
+      .finally(() => setLoading(false))
   }, [])
 
   useEffect(() => {
     setSearching(true)
-    getUserData('higorasilverio')
-  }, [getUserData])
+    if (!user?.login) {
+      getUserData('higorasilverio')
+    }
+    setSearching(false)
+  }, [getUserData, user])
 
   return (
     <Wrapper>
       <Paper>
         <Title label="Github" />
 
-        {searching && notFound && (
+        {loading && <S.Loader />}
+
+        {!loading && searching && notFound && (
           <S.FormikWrapper>
             <S.RetryMessage>User not found!</S.RetryMessage>
             <Button
               type="reset"
               icon="VscRefresh"
               label="Retry"
-              onClick={() => handleRetryClick()}
+              onClick={() => setNotFound(false)}
             />
           </S.FormikWrapper>
         )}
 
-        {searching && !notFound && (
+        {!loading && searching && !notFound && (
           <Formik
             initialValues={{ login: 'higorasilverio' }}
             validationSchema={Yup.object({
@@ -90,7 +82,7 @@ const Github = () => {
           </Formik>
         )}
 
-        {!searching && (
+        {!loading && !searching && (
           <>
             <FlexRow>
               <S.ImageWrapper>
@@ -109,22 +101,30 @@ const Github = () => {
                     </S.TableRow>
                   </S.TableHeader>
                   <S.TableBody>
-                    <S.TableRow>
-                      <S.TableData bold>Name</S.TableData>
-                      <S.TableData colspan={3}>{user?.name}</S.TableData>
-                    </S.TableRow>
-                    <S.TableRow>
-                      <S.TableData bold>Login</S.TableData>
-                      <S.TableData colspan={3}>{user?.login}</S.TableData>
-                    </S.TableRow>
-                    <S.TableRow>
-                      <S.TableData bold>Location</S.TableData>
-                      <S.TableData colspan={3}>{user?.location}</S.TableData>
-                    </S.TableRow>
-                    <S.TableRow>
-                      <S.TableData bold>Bio</S.TableData>
-                      <S.TableData colspan={3}>{handleBio()}</S.TableData>
-                    </S.TableRow>
+                    {user?.name && (
+                      <S.TableRow>
+                        <S.TableData bold>Name</S.TableData>
+                        <S.TableData colspan={3}>{user?.name}</S.TableData>
+                      </S.TableRow>
+                    )}
+                    {user?.login && (
+                      <S.TableRow>
+                        <S.TableData bold>Login</S.TableData>
+                        <S.TableData colspan={3}>{user?.login}</S.TableData>
+                      </S.TableRow>
+                    )}
+                    {user?.location && (
+                      <S.TableRow>
+                        <S.TableData bold>Location</S.TableData>
+                        <S.TableData colspan={3}>{user?.location}</S.TableData>
+                      </S.TableRow>
+                    )}
+                    {user?.bio && (
+                      <S.TableRow>
+                        <S.TableData bold>Bio</S.TableData>
+                        <S.TableData colspan={3}>{handleBio()}</S.TableData>
+                      </S.TableRow>
+                    )}
                   </S.TableBody>
                 </S.Table>
               </S.TableWrapper>
@@ -142,7 +142,7 @@ const Github = () => {
                   />
                 </S.Displayer>
               </S.Action>
-              <S.Action onClick={() => handleSearchClick()}>
+              <S.Action onClick={() => setSearching(true)}>
                 <S.Text>SEARCH</S.Text>
                 <S.Displayer>
                   <ActionIcon src="visual" icon="VscSearch" color="blue" size="lg" gradient={800} />
