@@ -1,4 +1,5 @@
-import { HomeButton, Paper, Title, Wrapper } from '@components/index'
+import * as S from './styles'
+import { Anchor, HomeButton, Paper, Title, Wrapper } from '@components/index'
 import { memo } from 'react'
 
 const Features = () => {
@@ -6,6 +7,9 @@ const Features = () => {
     <Wrapper>
       <Paper>
         <Title label="Features" />
+        <S.Grid>
+          <Anchor label="Advice" href="/features/advice" passHref icon="VscComment" />
+        </S.Grid>
       </Paper>
       <HomeButton />
     </Wrapper>
