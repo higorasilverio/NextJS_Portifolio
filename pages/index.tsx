@@ -1,8 +1,4 @@
-import Anchor from '../src/components/Anchor'
-import FlexRow from '../src/components/FlexRow'
-import Paper from '../src/components/Paper'
-import Title from '../src/components/Title'
-import Wrapper from '../src/components/Wrapper'
+import { Anchor, FlexRow, Paper, Title, Wrapper } from '@components/index'
 import { memo } from 'react'
 
 const Home = () => {

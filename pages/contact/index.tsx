@@ -1,12 +1,14 @@
 import * as S from './styles'
-import ActionIcon from '../../src/components/ActionIcon'
-import HomeButton from '../../src/components/HomeButton'
+import {
+  ActionIcon,
+  HomeButton,
+  Paper,
+  Subtitle,
+  Subtitle2,
+  Title2,
+  Wrapper
+} from '@components/index'
 import Image from 'next/image'
-import Paper from '../../src/components/Paper'
-import Subtitle from '../../src/components/Subtitle'
-import Subtitle2 from '../../src/components/Subtitle2'
-import Title2 from '../../src/components/Title2'
-import Wrapper from '../../src/components/Wrapper'
 import contactPic from '../../public/contact.jpg'
 import { memo } from 'react'
 

@@ -1,17 +1,11 @@
 /* eslint-disable no-extra-parens */
 import * as S from './styles'
 import * as Yup from 'yup'
+import { ActionIcon, Button, FlexRow, HomeButton, Paper, Title, Wrapper } from '@components/index'
 import { Form, Formik } from 'formik'
 import { memo, useCallback, useEffect, useState } from 'react'
-import ActionIcon from '../../src/components/ActionIcon'
-import Button from '@components/Button'
-import FlexRow from '@components/FlexRow'
 import GithubInterface from '@utils/interfaces/githubInterface'
-import HomeButton from '@components/HomeButton'
 import Image from 'next/image'
-import Paper from '@components/Paper'
-import Title from '@components/Title'
-import Wrapper from '@components/Wrapper'
 import api from '@service/api'
 
 const Github = () => {
