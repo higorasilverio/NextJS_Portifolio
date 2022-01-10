@@ -1,5 +1,7 @@
+/* eslint-disable no-extra-parens */
 import * as S from './styles'
 import { Anchor, HomeButton, Paper, Title, Wrapper } from '@components/index'
+import data from './pages.json'
 import { memo } from 'react'
 
 const Features = () => {
@@ -8,7 +10,9 @@ const Features = () => {
       <Paper>
         <Title label="Features" />
         <S.Grid>
-          <Anchor label="Advice" href="/features/advice" passHref icon="VscComment" />
+          {data.map((page, index) => (
+            <Anchor key={index} label={page.label} href={page.href} passHref />
+          ))}
         </S.Grid>
       </Paper>
       <HomeButton />

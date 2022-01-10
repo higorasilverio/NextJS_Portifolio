@@ -1,0 +1,37 @@
+[
+  {
+    "id": 0,
+    "label": "Advice",
+    "href": "/features/advice"
+  },
+  {
+    "id": 1,
+    "label": "Chuck",
+    "href": "/features/chuck"
+  },
+  {
+    "id": 2,
+    "label": "Kanye",
+    "href": "/features/kanye"
+  },
+  {
+    "id": 3,
+    "label": "Dogs",
+    "href": "/features/dogs"
+  },
+  {
+    "id": 4,
+    "label": "Cats",
+    "href": "/features/cats"
+  },
+  {
+    "id": 5,
+    "label": "Rick & Morty",
+    "href": "/features/rickandmorty"
+  },
+  {
+    "id": 6,
+    "label": "Fuck Off",
+    "href": "/features/fuckoff"
+  }
+]
