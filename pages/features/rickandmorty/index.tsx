@@ -53,13 +53,8 @@ const RickAndMorty = () => {
 
         {char && (
           <>
-            <Image
-              src={char.data.image}
-              alt="picture of the author"
-              priority
-              width={300}
-              height={300}
-            />
+            <Subtitle label={char.data.name} />
+            <Image src={char.data.image} alt="char picture" priority width={300} height={300} />
             <button type="button" onClick={() => handleChangeId(true)}>
               +
             </button>
