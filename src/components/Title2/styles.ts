@@ -5,7 +5,6 @@ export const Header = styled.h2`
   font-weight: 900;
   color: ${({ theme }) => theme.pallete.blue[800]};
   font-size: ${({ theme }) => theme.rawSizes.xl};
-  line-height: 1;
   margin: 0;
 
   --hgo-grad-min: ${({ theme }) => theme.pallete.blue[500]};

@@ -5,7 +5,6 @@ export const Text = styled.span`
   font-weight: 700;
   color: ${({ theme }) => theme.pallete.grey[800]};
   font-size: ${({ theme }) => theme.rawSizes.xl};
-  line-height: 1;
 
   --hgo-grad-min: ${({ theme }) => theme.pallete.grey[500]};
   --hgo-grad-max: ${({ theme }) => theme.pallete.grey[800]};

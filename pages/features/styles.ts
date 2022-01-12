@@ -10,6 +10,4 @@ export const Grid = styled.div`
   gap: ${({ theme }) => theme.rawSizes.md};
   place-items: center;
   place-content: center;
-
-  border: 1px solid red;
 `

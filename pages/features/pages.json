@@ -1,8 +1,8 @@
 [
   {
     "id": 0,
-    "label": "Advice",
-    "href": "/features/advice"
+    "label": "Rick & Morty",
+    "href": "/features/rickandmorty"
   },
   {
     "id": 1,
@@ -26,8 +26,8 @@
   },
   {
     "id": 5,
-    "label": "Rick & Morty",
-    "href": "/features/rickandmorty"
+    "label": "Advice",
+    "href": "/features/advice"
   },
   {
     "id": 6,
