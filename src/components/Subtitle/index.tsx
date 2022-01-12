@@ -3,10 +3,11 @@ import { memo } from 'react'
 
 interface IProps {
   label: string
+  className?: string
 }
 
-const Subtitle = ({ label }: IProps) => {
-  return <S.Text>{label}</S.Text>
+const Subtitle = ({ label, className }: IProps) => {
+  return <S.Text className={className}>{label}</S.Text>
 }
 
 export default memo(Subtitle)

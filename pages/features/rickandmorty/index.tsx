@@ -1,4 +1,5 @@
-import { Button, HomeButton, Paper, Subtitle, Title, Wrapper } from '@components/index'
+import * as S from './styles'
+import { Button, HomeButton, Paper, Subtitle, Subtitle2, Title, Wrapper } from '@components/index'
 import { memo, useEffect, useState } from 'react'
 import Image from 'next/image'
 import axios from 'axios'
@@ -53,14 +54,49 @@ const RickAndMorty = () => {
 
         {char && (
           <>
-            <Subtitle label={char.data.name} />
-            <Image src={char.data.image} alt="char picture" priority width={300} height={300} />
-            <button type="button" onClick={() => handleChangeId(true)}>
-              +
-            </button>
-            <button type="button" onClick={() => handleChangeId(false)}>
-              -
-            </button>
+            <S.DataWrapper>
+              <Image src={char.data.image} alt="char picture" priority width={300} height={300} />
+              <S.InformationWrapper>
+                <Subtitle className={'data-name'} label={char.data.name} />
+
+                <S.SubWrapper>
+                  <Subtitle2 label="Gender:" />
+                  <Subtitle2 label={char.data.gender} />
+                </S.SubWrapper>
+                <S.SubWrapper>
+                  <Subtitle2 label="Species:" />
+                  <Subtitle2 label={char.data.species} />
+                </S.SubWrapper>
+                <S.SubWrapper>
+                  <Subtitle2 label="Status:" />
+                  <Subtitle2 label={char.data.status} />
+                </S.SubWrapper>
+                <S.SubWrapper>
+                  <Subtitle2 label="Location:" />
+                  <Subtitle2 label={char.data.location.name} />
+                </S.SubWrapper>
+                <S.SubWrapper>
+                  <Subtitle2 label="Origin:" />
+                  <Subtitle2 label={char.data.origin.name} />
+                </S.SubWrapper>
+              </S.InformationWrapper>
+            </S.DataWrapper>
+            <S.ButtonWrapper>
+              <Button
+                icon="VscFoldUp"
+                label="UP"
+                type="button"
+                key={'button0'}
+                onClick={() => handleChangeId(true)}
+              />
+              <Button
+                icon="VscFoldDown"
+                label="DOWN"
+                type="button"
+                key={'button1'}
+                onClick={() => handleChangeId(false)}
+              />
+            </S.ButtonWrapper>
           </>
         )}
       </Paper>
