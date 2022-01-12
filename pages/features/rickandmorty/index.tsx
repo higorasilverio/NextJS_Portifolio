@@ -1,6 +1,6 @@
 import * as S from './styles'
 import { Button, HomeButton, Paper, Subtitle, Subtitle2, Title, Wrapper } from '@components/index'
-import { memo, useEffect, useState } from 'react'
+import { memo, useCallback, useEffect, useState } from 'react'
 import Image from 'next/image'
 import axios from 'axios'
 
@@ -30,13 +30,16 @@ const RickAndMorty = () => {
     }
   }, [charId])
 
-  const handleChangeId = (bool) => {
-    if (!bool && charId === 1) {
-      return
-    }
-    const nextId = bool ? charId + 1 : charId - 1
-    setCharId(nextId)
-  }
+  const handleChangeId = useCallback(
+    (bool) => {
+      if (!bool && charId === 1) {
+        return
+      }
+      const nextId = bool ? charId + 1 : charId - 1
+      setCharId(nextId)
+    },
+    [charId]
+  )
 
   return (
     <Wrapper>
