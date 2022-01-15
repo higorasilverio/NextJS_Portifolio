@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+export const TitleWrapper = styled.div`
+  text-align: center;
+`
+
 export const ButtonWrapper = styled.div`
   width: 100%;
   display: flex;
