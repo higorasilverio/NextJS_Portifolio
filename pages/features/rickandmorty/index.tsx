@@ -23,6 +23,8 @@ const RickAndMorty = () => {
   }, [])
 
   const getCharacter = useCallback(async (_id = null, _search = null) => {
+    setError(false)
+
     let baseUrl = 'https://rickandmortyapi.com/api/character/'
 
     if (_id) {
@@ -33,19 +35,19 @@ const RickAndMorty = () => {
       baseUrl = `${baseUrl}?name=${_search}`
     }
 
-    const result = await axios(`${baseUrl}`)
+    await axios(`${baseUrl}`)
+      .then((result) => {
+        if (isEmpty(result.data.results) && !isEmpty(result.data)) {
+          setChar(result.data)
+          return
+        }
 
-    if (isEmpty(result.data.results) && !isEmpty(result.data)) {
-      setChar(result.data)
-      return
-    }
-
-    if (!isEmpty(result.data.results[0])) {
-      setChar(result.data.results[0])
-      return
-    }
-
-    setError(true)
+        if (!isEmpty(result.data.results[0])) {
+          setChar(result.data.results[0])
+          return
+        }
+      })
+      .catch(() => setError(true))
   }, [])
 
   useEffect(() => {
