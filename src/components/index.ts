@@ -4,6 +4,7 @@ import Button from './Button'
 import FlexCol from './FlexCol'
 import FlexRow from './FlexRow'
 import HomeButton from './HomeButton'
+import Loader from './Loader'
 import Paper from './Paper'
 import Subtitle from './Subtitle'
 import Subtitle2 from './Subtitle2'
@@ -18,6 +19,7 @@ export {
   FlexCol,
   FlexRow,
   HomeButton,
+  Loader,
   Paper,
   Subtitle,
   Subtitle2,
