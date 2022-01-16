@@ -113,6 +113,10 @@ const RickAndMorty = () => {
       )
     }
 
+    if (loading) {
+      return <Loader />
+    }
+
     if (!char) {
       return (
         <>
@@ -184,14 +188,7 @@ const RickAndMorty = () => {
         <S.TitleWrapper>
           <Title label="Rick and Morty" />
         </S.TitleWrapper>
-        {loading ? (
-          <>
-            <Loader />
-            {error.state && <Subtitle label={error.message} />}
-          </>
-        ) : (
-          renderContent()
-        )}
+        {renderContent()}
       </Paper>
       <HomeButton />
     </Wrapper>
